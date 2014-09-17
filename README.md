@@ -14,9 +14,10 @@ Next, we're going to need to make some updates to `progrium/rootbuilder` - we ne
 
 Once we're in the config, do the following: 
 * Specify the correct architecture (I use x86_64 because I'm on a 64bit VM).
-* Under `Toolchain`, enable large files.
-* Under `Package managers, enable OPKG.`
-* Under `Networking applications`, press SPACE on `nginx` and enter the nginx config.
+* Under `Toolchain`, select glibc as the C library.
+* Under `Target Packages -> Package managers, enable OPKG.`
+* Under `Target Packages -> Networking applications`, press SPACE on `nginx` and enter the nginx config.
+* Under 
 * Configure nginx how you like it, and press F9 and save.
 
 Now, `cd ../` back into the top directory and `make`. It takes some time so I usally run `make > makelog` in `screen`.
