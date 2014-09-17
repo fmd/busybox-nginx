@@ -25,7 +25,7 @@ NGINX_CONF_OPT = \
 # So, we just need to create the directories used by nginx with the right
 # ownership.
 define NGINX_DEVICES
-/var/lib/nginx	755	33	33	-	-	-	-	-
+/var/lib/nginx	d	755	33	33	-	-	-	-	-
 endef
 
 NGINX_CONF_ENV += \
