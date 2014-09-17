@@ -6,7 +6,8 @@ The convenience of `apt-get install` but for Busybox!
 
 ## Nginx config
 
-Firstly, we're going to need to make some updates to `progrium/rootbuilder` - we need to add the nginx package to buildroot. From the top directory:
+First, edit `rootfs/rootbuilder-changes/package/nginx/nginx.mk` if you'd like to change the version from 1.7.3.
+Next, we're going to need to make some updates to `progrium/rootbuilder` - we need to add the nginx package to buildroot. From the top directory:
 
     sudo docker build -t progrium/rootbuilder rootfs/rootbuilder-changes
     cd rootfs && make config
