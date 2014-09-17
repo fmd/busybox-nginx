@@ -1,8 +1,31 @@
-# busybox
+# busybox - now with nginx support!
 
 This might not be the smallest Busybox container (4.8MB), but it has [opkg](http://wiki.openwrt.org/doc/techref/opkg), which means you can *very easily* install other [common packages](http://downloads.openwrt.org/snapshots/trunk/x86_64/packages/) while keeping the image size to an absolute minimum.
 
 The convenience of `apt-get install` but for Busybox!
+
+## Nginx config
+
+Firstly, we're going to need to make some updates to `progrium/rootbuilder` - we need to add the nginx package to buildroot. From the top directory:
+
+    sudo docker build -t progrium/rootbuilder rootfs/rootbuilder-changes
+    cd rootfs && make config
+
+Once we're in the config, do the following: 
+* Specify the correct architecture (I use x86_64 because I'm on a 64bit VM).
+* Under `Toolchain`, enable large files.
+* Under `Package managers, enable OPKG.`
+* Under `Networking applications`, press SPACE on `nginx` and enter the nginx config.
+* Configure nginx how you like it, and press F9 and save.
+
+Now, `cd ../` back into the top directory and `make`. It takes some time so I usally run `make > makelog` in `screen`.
+That's it!
+
+Run
+
+    cat makelog | grep -i nginx
+
+To check that nginx was installed successfully.
 
 ## Using and installing packages
 
